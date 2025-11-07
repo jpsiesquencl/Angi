@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: #0b1522;
+  flex-direction: column;
+  align-items: center;
+}
+.titulo {
+  color: #212a37;
+  text-align: center;
+  font-family: "Pinyon Script", cursive;
+  font-size: 30px;
+  padding: 25px;
+}
+.corazon {
+  height: 70px;
+  width: 70px;
+  background: #f20044;
+  position: relative;
+  transform: rotate(-45deg);
+  box-shadow: -10px 10px 90px #f20044;
+  animation: heart 0.6s linear infinite;
+}
+@keyframes heart {
+  0% {
+    transform: rotate(-45deg) scale(1.07);
+  }
+  80% {
+    transform: rotate(-45deg) scale(1);
+  }
+  100% {
+    transform: rotate(-45deg) scale(0.8);
+  }
+}
+.corazon:before {
+  content: "";
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  background: #f20044;
+  top: -50%;
+  border-radius: 50px;
+  box-shadow: -10px 10px 90px #f20044;
+}
+.corazon::after {
+  content: "";
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  background: #f20044;
+  right: -50%;
+  border-radius: 50px;
+  box-shadow: -10px 10px 90px #f20044;
+}
+.firma {
+  color: #212a37;
+  font-family: "Pinyon Script", cursive;
+  font-size: 30px;
+  padding-top: 15px;
+}
+
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover; /* Ajusta el video sin deformarlo */
+  z-index: -1; /* Lo manda detrás del contenido */
+
+  background: url("fallback.png") no-repeat center center;
+  background-size: cover;
+}
+
+.mensaje {
+  display: inline-block;
+  border-right: 2px solid transparent; /* cursor parpadeante */
+  white-space: nowrap;
+  overflow: hidden;
+  padding-right: 5px;
+}
+
+.mensaje::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #fff; /* color del cursor */
+  margin-left: 4px; /* espacio entre texto y cursor */
+  vertical-align: -0.1em; /* ajuste fino */
+  animation: blink 0.7s infinite;
+}
+
+/* Cuando termina la animación, ocultamos el cursor */
+.mensaje.fin::after {
+  display: none;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
